@@ -36,6 +36,14 @@ export default {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
+				success: {
+					DEFAULT: 'hsl(var(--success))',
+					foreground: 'hsl(var(--success-foreground))'
+				},
+				warning: {
+					DEFAULT: 'hsl(var(--warning))',
+					foreground: 'hsl(var(--warning-foreground))'
+				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))'
@@ -63,6 +71,18 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			backgroundImage: {
+				'gradient-candy': 'var(--gradient-candy)',
+				'gradient-background': 'var(--gradient-background)',
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-button': 'var(--gradient-button)',
+				'gradient-magical': 'var(--gradient-magical)'
+			},
+			boxShadow: {
+				'candy': 'var(--shadow-candy)',
+				'magical': 'var(--shadow-magical)',
+				'glow': 'var(--shadow-glow)'
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -70,25 +90,38 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'candy-bounce': {
+					'0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+					'50%': { transform: 'translateY(-20px) rotate(10deg)' }
+				},
+				'sparkle': {
+					'0%': { opacity: '0', transform: 'scale(0)' },
+					'50%': { opacity: '1', transform: 'scale(1)' },
+					'100%': { opacity: '0', transform: 'scale(0)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { boxShadow: '0 0 20px hsl(280 100% 70% / 0.3)' },
+					'50%': { boxShadow: '0 0 40px hsl(280 100% 70% / 0.8)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'candy-bounce': 'candy-bounce 2s ease-in-out infinite',
+				'sparkle': 'sparkle 1.5s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
 			}
 		}
 	},

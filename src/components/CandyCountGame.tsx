@@ -35,8 +35,8 @@ export function CandyCountGame() {
   const { toast } = useToast();
 
   const generateRandomPosition = useCallback(() => ({
-    x: Math.random() * 70 + 10, // 10-80% of screen width
-    y: Math.random() * 60 + 15, // 15-75% of screen height
+    x: Math.random() * 80 + 10, // 10-90% of container width
+    y: Math.random() * 70 + 15, // 15-85% of container height
   }), []);
 
   const generateAnswerOptions = useCallback((correct: number) => {
@@ -122,25 +122,34 @@ export function CandyCountGame() {
         )}
 
         {gameState === 'counting' && (
-          <div className="relative">
-            <Card className="bg-gradient-card backdrop-blur-sm border-2 border-white/30 shadow-magical p-8 text-center">
+          <div className="space-y-6">
+            <Card className="bg-gradient-card backdrop-blur-sm border-2 border-white/30 shadow-magical p-6 text-center">
               <h2 className="text-3xl font-bold text-primary mb-4">Count Quickly! ⚡</h2>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground mb-4">
                 How many {displayItems[0]?.type.name.toLowerCase()}s do you see?
               </p>
               <div className="text-sm text-muted-foreground">Round {round} of 5</div>
             </Card>
             
-            <div className="absolute inset-0 pointer-events-none">
-              {displayItems.map((item, index) => (
-                <CandyObject
-                  key={item.id}
-                  item={item.type}
-                  position={item.position}
-                  delay={index * 0.1}
-                />
-              ))}
-            </div>
+            {/* Counting Box Container */}
+            <Card className="bg-gradient-card backdrop-blur-sm border-4 border-primary/30 shadow-magical min-h-[400px] relative overflow-hidden">
+              <div className="absolute inset-4">
+                {displayItems.map((item, index) => (
+                  <CandyObject
+                    key={item.id}
+                    item={item.type}
+                    position={item.position}
+                    delay={index * 0.1}
+                  />
+                ))}
+              </div>
+              
+              {/* Decorative sparkles in corners */}
+              <div className="absolute top-4 left-4 text-2xl animate-sparkle">✨</div>
+              <div className="absolute top-4 right-4 text-2xl animate-sparkle" style={{animationDelay: '0.5s'}}>✨</div>
+              <div className="absolute bottom-4 left-4 text-2xl animate-sparkle" style={{animationDelay: '1s'}}>✨</div>
+              <div className="absolute bottom-4 right-4 text-2xl animate-sparkle" style={{animationDelay: '1.5s'}}>✨</div>
+            </Card>
           </div>
         )}
 
